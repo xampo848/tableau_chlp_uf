@@ -3,11 +3,11 @@
     var myConnector = tableau.makeConnector();
 
     myConnector.getSchema = function (schemaCallback) {
-     var cols = [{
-          fecha: "fecha",
+      var cols = [{
+          id: "fecha",
           dataType: tableau.dataTypeEnum.string
         }, {
-            valor: "valor",
+            id: "valor",
             dataType: tableau.dataTypeEnum.float
         }];
 
@@ -18,12 +18,12 @@
         };
 
         schemaCallback([tableSchema]);
-        };
+    };
 
     myConnector.getData = function (table, doneCallback) {
       $.getJSON("https://mindicador.cl/api/uf", function(resp) {
           var feat = resp.serie;
-              tableData = [];
+          var tableData = [];
           // Iterate over the JSON object
           tableData.push({
               "fecha": feat[0].fecha,
